@@ -42,6 +42,11 @@ static const NSUInteger ChunkSize = 16384;
 
 - (NSData *)gzippedDataWithCompressionLevel:(float)level
 {
+    return [self gzippedMutableDataWithCompressionLevel:level];
+}
+
+- (NSMutableData *)gzippedMutableDataWithCompressionLevel:(float)level
+{
     if ([self length])
     {
         z_stream stream;
@@ -77,10 +82,20 @@ static const NSUInteger ChunkSize = 16384;
 
 - (NSData *)gzippedData
 {
-    return [self gzippedDataWithCompressionLevel:-1.0f];
+    return [self gzippedMutableData];
+}
+
+- (NSMutableData *)gzippedMutableData
+{
+    return [self gzippedMutableDataWithCompressionLevel:-1.0f];
 }
 
 - (NSData *)gunzippedData
+{
+    return [self gunzippedMutableData];
+}
+
+- (NSMutableData *)gunzippedMutableData
 {
     if ([self length])
     {

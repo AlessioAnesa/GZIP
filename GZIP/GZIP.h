@@ -39,5 +39,8 @@
 - (NSData *)gzippedDataWithCompressionLevel:(float)level;
 - (NSData *)gzippedData;
 - (NSData *)gunzippedData;
+- (NSMutableData *)gzippedMutableDataWithCompressionLevel:(float)level;
+- (NSMutableData *)gzippedMutableData;
+- (NSMutableData *)gunzippedMutableData;
 
 @end
